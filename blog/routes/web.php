@@ -41,3 +41,19 @@ Route::post('/contacts/all/{id}/saved', 'ContactController@UpdateSaved')->name('
 Route::get('/contacts/all/{id}/deleted', 'ContactController@Deleted')->name('contact-data-deleted');
 
 Route::post('/about/submit', 'ImgController@ImgSubmit')->name('img-form');
+
+
+
+Route::middleware("auth")->group(function (){
+    Route::get('/logout', 'AuthController@Logout')->name('logout');
+
+});
+
+Route::middleware("guest")->group(function (){
+    Route::get('/registration', 'AuthController@registration')->name('registration');
+    Route::post('/registration/submit', 'AuthController@RegistrationSubmit')->name('RegistrationSubmit');
+
+    Route::get('/login', 'AuthController@LoginForm')->name('login');
+    Route::post('/login/submit', 'AuthController@LoginSubmit')->name('loginSubmit');
+});
+

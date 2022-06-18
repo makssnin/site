@@ -13,6 +13,14 @@
         <li class="nav-item"><a href="{{route('work')}}" class="nav-link">Work</a></li>
         <li class="nav-item"><a href="{{route('contacts')}}" class="nav-link">Contacts</a></li>
         <li class="nav-item"><a href="{{route('contact-data')}}" class="nav-link">Message</a></li>
+        @guest("web")
+            <li class="nav-item"><a href="{{route('login')}}" class="nav-link">Войти</a></li>
+        @endguest
+        @auth("web")
+            <li class="nav-item"><a href="{{route('logout')}}" class="nav-link">Выйти</a></li>
+        @endauth
+
+
     </ul>
 </header>
 

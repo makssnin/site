@@ -23,12 +23,18 @@
 
 <div class="container mt-5">
     @include('templates.messages')
+    @yield('center')
+
     <div class="row">
         <div class="col-8">
             @yield('main')
         </div>
         <div class="col-4">
+            @if(Request::is('login', 'registration'))
+
+            @else
             @include('templates.saidbar')
+            @endif
         </div>
     </div>
 </div>
